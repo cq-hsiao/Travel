@@ -1,6 +1,6 @@
 <template>
     <div class="icons">
-        <swiper>
+        <swiper :options="swiperOption">
             <swiper-slide v-for="(page,count) of pages" :key="count">
                 <div class="icon" v-for="item of page" :key="item.id">
                     <div class="icon-img">
@@ -9,6 +9,7 @@
                     <p class="icon-desc">{{item.desc}}</p>
                 </div>
             </swiper-slide>
+            <div class="swiper-pagination"  slot="pagination"></div>
         </swiper>
         <!--<div class="icon">-->
             <!--<div class="icon-img">-->
@@ -24,6 +25,9 @@ export default {
   name: 'HomeIcons',
   data () {
     return {
+      swiperOption: {
+        pagination: '.swiper-pagination'
+      },
       iconList: [{
         id: '0001',
         imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
@@ -84,7 +88,16 @@ export default {
   @import '~styles/mixins.styl'
   .icons >>> .swiper-container
     height: 0
-    padding-bottom: 50%
+    padding-bottom: 58%
+  .icons >>> .swiper-pagination-bullet
+    width:6px
+    height:6px
+  .icons >>> .swiper-pagination-bullet-active
+    background: rgba(0,175,190,.8)
+  .icons
+    height:0
+    padding-bottom:58%
+    display:block
     .icon
       position:relative
       float:left
