@@ -12,7 +12,7 @@ export default {
   name: 'HomeHeader'
 }
 </script>
-
+<!--stylus CSS预处理器-->
 <style lang="stylus" scoped>
     @import '~styles/varibles.styl'
     .header{
