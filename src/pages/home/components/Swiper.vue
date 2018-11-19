@@ -37,6 +37,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .wrapper >>> .swiper-pagination-bullet
+    width:6px
+    height:6px
   .wrapper >>> .swiper-pagination-bullet-active
     background: #fff
   .wrapper
