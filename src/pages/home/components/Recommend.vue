@@ -6,7 +6,7 @@
             <span class="mp-title">猜你喜欢</span>
         </div>
         <ul class="mp-like-list">
-            <li class="mp-border-bottom" v-for="item of recommendList">
+            <li class="mp-border-bottom" v-for="item of recommendList" :key="item.id">
                 <img class="item-img" :src="item.imgUrl" />
                 <div class="item-info">
                     <p class="item-title">{{item.title}}</p>
