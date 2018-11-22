@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import fastClick from 'fastClick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import store from './store'
+
 /* 重置页面样式表 统一不同手机的页面样式 */
 import 'styles/reset.css'
 /* 解决1像素边框问题 */
@@ -22,6 +24,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

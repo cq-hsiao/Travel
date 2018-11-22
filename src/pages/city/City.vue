@@ -7,9 +7,10 @@
             </router-link>
         </div>
         <!--搜索框-->
-        <div class="search">
-            <input  class="search-input" type="text" placeholder="输入城市名或拼音" />
-        </div>
+        <!--<div class="search">-->
+            <!--<input  class="search-input" type="text" placeholder="输入城市名或拼音" />-->
+        <!--</div>-->
+        <city-search :cities="cities"></city-search>
         <!--城市列表-->
         <city-list
                 :cities="cities"
@@ -27,11 +28,13 @@
 import axios from 'axios'
 import CityList from './components/List'
 import CityAlphabet from './components/Alphabet'
+import CitySearch from './components/Search'
 export default {
   name: 'City',
   components: {
     CityList,
-    CityAlphabet
+    CityAlphabet,
+    CitySearch
   },
   data () {
     return {
