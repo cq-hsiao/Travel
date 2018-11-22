@@ -18,41 +18,11 @@
               </div>
           </div>
       </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
+      <div class="area" v-for="(item,key) of cities" :key="key" :ref="key">
+        <div class="title border-topbottom">{{key}}</div>
           <div class="item-list">
-              <div class="item border-bottom">阿拉尔</div>
-              <div class="item border-bottom">安庆</div>
-              <div class="item border-bottom">安康</div>
-              <div class="item border-bottom">澳门</div>
+              <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id"  @click="handleCityClick(innerItem.name)"> {{innerItem.name}}</div>
           </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="item-list">
-          <div class="item border-bottom">阿拉尔</div>
-          <div class="item border-bottom">安庆</div>
-          <div class="item border-bottom">安康</div>
-          <div class="item border-bottom">澳门</div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="item-list">
-          <div class="item border-bottom">阿拉尔</div>
-          <div class="item border-bottom">安庆</div>
-          <div class="item border-bottom">安康</div>
-          <div class="item border-bottom">澳门</div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">A</div>
-        <div class="item-list">
-          <div class="item border-bottom">阿拉尔</div>
-          <div class="item border-bottom">安庆</div>
-          <div class="item border-bottom">安康</div>
-          <div class="item border-bottom">澳门</div>
-        </div>
       </div>
     </div>
   </div>
@@ -65,10 +35,18 @@ export default {
   name: 'CityList',
   props: {
     cities: Object,
-    hot: Array
+    hot: Array,
+    letter: String
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
+  },
+  watch: {
+    letter () {
+//      console.log(this.$refs[this.letter])
+      const element = this.$refs[this.letter][0]
+      this.scroll.scrollToElement(element)
+    }
   }
 }
 </script>

@@ -2,14 +2,14 @@
   <ul class="list">
     <li
       class="item"
-      v-for="item of letters"
+      v-for="(item,index) of letters"
       :key="item"
       :ref="item"
       @touchstart.prevent="handleTouchStart"
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
-      @click="handleLetterClick"
-    >
+      @click="handleLetterClick($event,index)"
+      :class="{ active: isActive == index }">
       {{item}}
     </li>
   </ul>
@@ -34,14 +34,18 @@ export default {
     return {
       touchStatus: false,
       startY: 0,
-      timer: null
+      timer: null,
+      isActive: -1
     }
   },
   updated () {
     this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {
-    handleLetterClick (e) {
+    handleLetterClick (e,index) {
+//      console.log(e)
+//      console.log(index)
+      this.isActive = index
       this.$emit('change', e.target.innerText)
     },
     handleTouchStart () {
@@ -49,6 +53,11 @@ export default {
     },
     handleTouchMove (e) {
       if (this.touchStatus) {
+//        const startY = this.$refs['A'][0].offsetTop
+//        console.log(startY)
+//        const touchY = e.touches[0].clientY
+//        console.log(touchY)
+        //函数节流
         if (this.timer) {
           clearTimeout(this.timer)
         }
@@ -56,6 +65,7 @@ export default {
           const touchY = e.touches[0].clientY - 79
           const index = Math.floor((touchY - this.startY) / 20)
           if (index >= 0 && index < this.letters.length) {
+            this.isActive = index
             this.$emit('change', this.letters[index])
           }
         }, 16)
@@ -83,4 +93,6 @@ export default {
       line-height: .4rem
       text-align: center
       color: $bgColor
+    .active
+      color:#f55
 </style>
