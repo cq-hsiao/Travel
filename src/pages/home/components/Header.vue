@@ -14,7 +14,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'HomeHeader',
   computed: {
-    ...mapState(['city']) //将vuex的数据映射到组件的计算属性里
+    ...mapState(['city']) //将vuex的数据映射到组件的计算属性里 相当于 this.$store.state.city
   }
 }
 </script>
