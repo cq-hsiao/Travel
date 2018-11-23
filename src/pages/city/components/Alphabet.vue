@@ -12,6 +12,7 @@
       :class="{ active: isActive == index }">
       {{item}}
     </li>
+    <!--.prevent 事件修饰符，阻止touchstart默认行为-->
   </ul>
 </template>
 

@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import fastClick from 'fastClick'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'babel-polyfill'
 import store from './store'
 
 /* 重置页面样式表 统一不同手机的页面样式 */
