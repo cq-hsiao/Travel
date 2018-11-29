@@ -15,10 +15,14 @@
         <city-list
                 :cities="cities"
                 :hot="hotCities"
-                :letter="letter"></city-list>
+                :letter="letter"
+                :allLetter="allLetter"
+                @currentIndex="getCurrentIndex"></city-list>
         <city-alphabet
                 :cities="cities"
+                :CurrentIndex="CurrentIndex"
                 @change="handleLetterChange"
+                @allLetter="getAllLetter"
         ></city-alphabet>
     </div>
 
@@ -40,7 +44,9 @@ export default {
     return {
       cities: {},
       hotCities: [],
-      letter: ''
+      letter: '',
+      allLetter: [],
+      CurrentIndex: ''
     }
   },
   methods: {
@@ -51,7 +57,7 @@ export default {
     handleGetCityInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) {
-        console.log(res.data)
+//        console.log(res.data)
         const data = res.data
         this.cities = data.cities
         this.hotCities = data.hotCities
@@ -59,6 +65,13 @@ export default {
     },
     handleLetterChange (letter) {
       this.letter = letter
+    },
+    getAllLetter(letters) {
+      this.allLetter = letters
+      //console.log(this.allLetter)
+    },
+    getCurrentIndex(CurrentIndex) {
+      this.CurrentIndex = CurrentIndex
     }
   },
   mounted () {
